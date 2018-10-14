@@ -16,7 +16,11 @@ bool executeFade();
 bool executeFadeWithBlock();
 bool initialize();
 
+static esp_err_t event_handler(void *ctx, system_event_t *event);
+void wifi_init_sta();
+
 void random(__uint32_t fadetime);
 void party(__uint32_t fadetime);
+
 
 #endif
