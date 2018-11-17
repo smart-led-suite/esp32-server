@@ -34,17 +34,10 @@
 
 #include "mqtt.h"
 #include "led.h"
-//-------------------
-//WIFI STUFF
-/* FreeRTOS event group to signal when we are connected*/
-static EventGroupHandle_t wifi_event_group;
+#include "wifi.h"
 
-/* The event group allows multiple bits for each event,
-   but we only care about one event - are we connected
-   to the AP with an IP? */
 
 const char *TAG = "MQTTS_SAMPLE";
-const static int CONNECTED_BIT = BIT0;
 
 struct rgb rgb_1;
 

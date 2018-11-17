@@ -47,22 +47,4 @@ const char *TAG;
 
 struct rgb rgb_1;
 
-void update_color(uint32_t r, uint32_t g, uint32_t b);
-
-
-bool setTargetBrightness(__uint8_t RGB, __uint64_t newBrightness, __uint32_t fadetime);
-bool executeFade();
-bool executeFadeWithBlock();
-bool initialize();
-
-void update();
-
-void wifi_init();
-esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event);
-void mqtt_app_start(void);
-
-void random(__uint32_t fadetime);
-void party(__uint32_t fadetime);
-
-
 #endif

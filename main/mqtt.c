@@ -2,6 +2,7 @@
 #include "mqtt.h"
 #include "main.h"
 #include "string.h"
+#include "led.h"
 
 // buffer used to send/receive data with MQTT
 #define MSG_BUFFER_SIZE 20
@@ -44,7 +45,7 @@ void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32
     }
   } else if (strcmp(MQTT_LIGHT_BRIGHTNESS_COMMAND_TOPIC, topic) == 0) {
     uint8_t brightness = atoi(data);
-    if (brightness < 0 || brightness > 100) {
+    if (brightness > 100) {
       // do nothing...
       return;
     } else {
