@@ -2,7 +2,7 @@
 Software for receiving commands via MQTT from the Home Assistant (https://www.home-assistant.io) Framework. 
 You have to add to the configurations.yaml in the ~/.homeassistant/configurations.yaml:
 
-```
+```YAML
 mqtt:
   port: 1883 (standart)
   username: homeassistant(standart)
