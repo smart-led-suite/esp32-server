@@ -35,6 +35,24 @@
 #include "esp_log.h"
 #include "mqtt_client.h"
 
+struct rgb {
+    bool state;
+    uint8_t brightness;
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+};
+
+static const char *TAG;
+
+struct rgb rgb_1;
+
+void update_color(uint32_t r, uint32_t g, uint32_t b);
+
+void publishRGBState();
+void publishRGBBrightness();
+void publishRGBColor();
+
 bool setTargetBrightness(__uint8_t RGB, __uint64_t newBrightness, __uint32_t fadetime);
 bool executeFade();
 bool executeFadeWithBlock();

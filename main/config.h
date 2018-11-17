@@ -35,3 +35,5 @@
 #define MQTT_LIGHT_RGB_STATE_TOPIC  "office/rgb1/rgb/status"
 #define MQTT_LIGHT_RGB_COMMAND_TOPIC  "office/rgb1/rgb/set"
 
+#define LIGHT_ON "ON"
+#define LIGHT_OFF "OFF"
