@@ -52,7 +52,7 @@ struct rgb rgb_1;
 char msg_buffer[MSG_BUFFER_SIZE]; 
 esp_mqtt_client_handle_t client;
 
-void update_color(uint32_t r, uint32_t g, uint32_t b) {
+void update() {
 
     uint32_t red = (rgb_1.red * 32 / 100) * rgb_1.brightness;
     uint32_t green = (rgb_1.green * 32 / 100) * rgb_1.brightness;
@@ -81,7 +81,7 @@ void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32
         printf("LIGHTS ON\n");
       if (rgb_1.state != true) {
         rgb_1.state = true;
-        update_color(rgb_1.red, rgb_1.green, rgb_1.blue);
+        update();
         //printf("update color worked\n");
         publishRGBState();
         //printf("publish worked\n");
@@ -90,7 +90,7 @@ void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32
       if (rgb_1.state != false) {
         rgb_1.state = false;
         printf("LIGHTS ON\n");
-        update_color(0, 0, 0);
+        update();
         publishRGBState();
       }
     }
@@ -102,7 +102,7 @@ void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32
     } else {
         printf("new brightness: %d\n", brightness);
       rgb_1.brightness = brightness;
-      update_color(rgb_1.red, rgb_1.green, rgb_1.blue);
+      update();
       publishRGBBrightness();
     }
   } else if (strcmp(MQTT_LIGHT_RGB_COMMAND_TOPIC, topic) == 0) {
