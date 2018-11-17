@@ -43,7 +43,7 @@ struct rgb {
     uint8_t blue;
 };
 
-static const char *TAG;
+const char *TAG;
 
 struct rgb rgb_1;
 
@@ -58,9 +58,11 @@ bool executeFade();
 bool executeFadeWithBlock();
 bool initialize();
 
-static void wifi_init();
-static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event);
-static void mqtt_app_start(void);
+void update();
+
+void wifi_init();
+esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event);
+void mqtt_app_start(void);
 
 void random(__uint32_t fadetime);
 void party(__uint32_t fadetime);

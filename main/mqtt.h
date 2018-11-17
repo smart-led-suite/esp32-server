@@ -35,6 +35,6 @@
 #include "esp_log.h"
 #include "mqtt_client.h"
 
-void handleMessage(char * payload, char * data);
+void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32_t data_len);
 
 #endif
