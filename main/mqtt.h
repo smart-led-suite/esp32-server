@@ -37,4 +37,8 @@
 
 void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32_t data_len);
 
+void publishRGBState();
+void publishRGBBrightness();
+void publishRGBColor();
+
 #endif

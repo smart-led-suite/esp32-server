@@ -49,9 +49,6 @@ struct rgb rgb_1;
 
 void update_color(uint32_t r, uint32_t g, uint32_t b);
 
-void publishRGBState();
-void publishRGBBrightness();
-void publishRGBColor();
 
 bool setTargetBrightness(__uint8_t RGB, __uint64_t newBrightness, __uint32_t fadetime);
 bool executeFade();
