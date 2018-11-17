@@ -1,11 +1,9 @@
 //WIFI
 #define WIFI_MODE_AP        FALSE //TRUE:AP FALSE:STA
-#define WIFI_SSID           "WIFI_SSID"
-#define WIFI_PASS           "PASS"
 #define WIFI_MAX_STA_CONN   (4)
 
-
-
+#define MQTT_LIGHT_STATE_TOPIC "homeassistant/rgb/led1/status"
+#define MQTT_LIGHT_BRIGHTNESS_STATE_TOPIC "homeassistant/rgb/led1/set"
 
 #define LED_1_R             (17)
 #define LED_1_R_CH          LEDC_CHANNEL_0
@@ -26,3 +24,5 @@
 #define LED_HS_TIMER        LEDC_TIMER_0
 #define LED_HS_MODE         LEDC_HIGH_SPEED_MODE
 #define LED_MAX_DUTY        (8)
+
+
