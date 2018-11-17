@@ -60,9 +60,9 @@ void update() {
     
     printf("new Value for rgb: %d %d %d", red, green, blue);
     
-    setTargetBrightness(0, red, 1000);
-    setTargetBrightness(1, green, 1000);
-    setTargetBrightness(2, blue, 1000);
+    setTargetBrightness(0, red, 600);
+    setTargetBrightness(1, green, 600);
+    setTargetBrightness(2, blue, 600);
 
     executeFade();
 }
