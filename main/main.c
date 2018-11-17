@@ -48,20 +48,6 @@ const static int CONNECTED_BIT = BIT0;
 
 struct rgb rgb_1;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //------------------------------------------------------------------------------------------------------------------
 
 
@@ -70,18 +56,13 @@ void app_main()
 {
     initialize();
     printf("Initializitaion complete!\n");
-
-
-    rgb_1.brightness = 100;
-    rgb_1.red = 255;
-    rgb_1.green = 253;
-    rgb_1.blue = 50;
-    rgb_1.state = true;
+    rgb_1.brightness = 0;
+    rgb_1.red = 253;
+    rgb_1.green = 245;
+    rgb_1.blue = 230;
+    rgb_1.state = false;
     update();
 }
-
-
-
 
 
 bool initialize() {
