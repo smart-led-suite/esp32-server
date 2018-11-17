@@ -57,10 +57,14 @@ void update() {
     uint32_t red = (rgb_1.red * 32 / 100) * rgb_1.brightness;
     uint32_t green = (rgb_1.green * 32 / 100) * rgb_1.brightness;
     uint32_t blue = (rgb_1.blue * 32 / 100) * rgb_1.brightness;
+    
     printf("new Value for rgb: %d %d %d", red, green, blue);
-    setTargetBrightness(0, red, 0);
-    setTargetBrightness(1, green, 5);
-    setTargetBrightness(2, blue, 5);
+    
+    setTargetBrightness(0, red, 1000);
+    setTargetBrightness(1, green, 1000);
+    setTargetBrightness(2, blue, 1000);
+
+    executeFade();
 }
 
 
@@ -129,8 +133,10 @@ void handleMessage(char * topic_src, uint32_t topic_len, char * data_src, uint32
             }
             counter++;
             token = strtok(NULL, ",");
+        
         }
         ESP_LOGI(TAG, "rgb: %d, %d, %d\n", rgb_1.red, rgb_1.green, rgb_1.blue);
+        update();
     }
 }
 
@@ -201,14 +207,14 @@ void app_main()
 {
     initialize();
     printf("Initializitaion complete!\n");
-    rgb_1.brightness = 80;
+
+
+    rgb_1.brightness = 100;
     rgb_1.red = 255;
     rgb_1.green = 253;
     rgb_1.blue = 50;
-    update();
     rgb_1.state = true;
-   // party(2000);
-
+    update();
 }
 
 
@@ -368,9 +374,12 @@ static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
             break;
 
         case MQTT_EVENT_SUBSCRIBED:
-            ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
-            msg_id = esp_mqtt_client_publish(client, "/topic/qos0", "data", 0, 0, 0);
-            ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
+            publishRGBState();
+            publishRGBBrightness();
+            publishRGBColor();
+            // ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
+            // msg_id = esp_mqtt_client_publish(client, "/topic/qos0", "data", 0, 0, 0);
+            // ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
             break;
         case MQTT_EVENT_UNSUBSCRIBED:
             ESP_LOGI(TAG, "MQTT_EVENT_UNSUBSCRIBED, msg_id=%d", event->msg_id);
